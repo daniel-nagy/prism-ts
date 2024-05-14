@@ -16,7 +16,6 @@
     "build": "tsc --project tsconfig.json",
     "postbuild": "cp ./LICENSE build",
     "clean": "rm -rf build",
-    "eslint": "eslint src",
     "eslint-fix": "eslint src --fix",
     "prettier": "prettier --check --ignore-path .gitignore .",
     "prettier-fix": "prettier --write --ignore-path .gitignore .",

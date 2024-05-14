@@ -6,7 +6,9 @@ module.exports = {
   ],
   parser: "@typescript-eslint/parser",
   parserOptions: {
-    EXPERIMENTAL_useProjectService: true,
+    EXPERIMENTAL_useProjectService: {
+      maximumDefaultProjectFileMatchCount_THIS_WILL_SLOW_DOWN_LINTING: 2000,
+    },
     project: true,
     tsconfigRootDir: __dirname,
   },
