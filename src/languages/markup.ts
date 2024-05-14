@@ -1,4 +1,8 @@
-Prism.languages.markup = {
+// @ts-nocheck
+
+import { languages } from "../prism";
+
+languages.markup = {
   comment: {
     pattern: /<!--(?:(?!<!--)[\s\S])*?-->/,
     greedy: true,
@@ -78,19 +82,18 @@ Prism.languages.markup = {
   ],
 };
 
-Prism.languages.markup["tag"].inside["attr-value"].inside["entity"] =
-  Prism.languages.markup["entity"];
-Prism.languages.markup["doctype"].inside["internal-subset"].inside =
-  Prism.languages.markup;
+languages.markup["tag"].inside["attr-value"].inside["entity"] =
+  languages.markup["entity"];
+languages.markup["doctype"].inside["internal-subset"].inside = languages.markup;
 
 // Plugin to make entity title show the real entity, idea by Roman Komarov
-Prism.hooks.add("wrap", function (env) {
-  if (env.type === "entity") {
-    env.attributes["title"] = env.content.replace(/&amp;/, "&");
-  }
-});
+// Prism.hooks.add("wrap", function (env) {
+//   if (env.type === "entity") {
+//     env.attributes["title"] = env.content.replace(/&amp;/, "&");
+//   }
+// });
 
-Object.defineProperty(Prism.languages.markup.tag, "addInlined", {
+Object.defineProperty(languages.markup.tag, "addInlined", {
   /**
    * Adds an inlined language to markup.
    *
@@ -107,7 +110,7 @@ Object.defineProperty(Prism.languages.markup.tag, "addInlined", {
     includedCdataInside["language-" + lang] = {
       pattern: /(^<!\[CDATA\[)[\s\S]+?(?=\]\]>$)/i,
       lookbehind: true,
-      inside: Prism.languages[lang],
+      inside: languages[lang],
     };
     includedCdataInside["cdata"] = /^<!\[CDATA\[|\]\]>$/i;
 
@@ -119,7 +122,7 @@ Object.defineProperty(Prism.languages.markup.tag, "addInlined", {
     };
     inside["language-" + lang] = {
       pattern: /[\s\S]+/,
-      inside: Prism.languages[lang],
+      inside: languages[lang],
     };
 
     const def = {};
@@ -129,19 +132,19 @@ Object.defineProperty(Prism.languages.markup.tag, "addInlined", {
           /__/g,
           function () {
             return tagName;
-          },
+          }
         ),
-        "i",
+        "i"
       ),
       lookbehind: true,
       greedy: true,
       inside: inside,
     };
 
-    Prism.languages.insertBefore("markup", "cdata", def);
+    languages.insertBefore("markup", "cdata", def);
   },
 });
-Object.defineProperty(Prism.languages.markup.tag, "addAttribute", {
+Object.defineProperty(languages.markup.tag, "addAttribute", {
   /**
    * Adds an pattern to highlight languages embedded in HTML attributes.
    *
@@ -154,14 +157,14 @@ Object.defineProperty(Prism.languages.markup.tag, "addAttribute", {
    * addAttribute('style', 'css');
    */
   value: function (attrName, lang) {
-    Prism.languages.markup.tag.inside["special-attr"].push({
+    languages.markup.tag.inside["special-attr"].push({
       pattern: RegExp(
         /(^|["'\s])/.source +
           "(?:" +
           attrName +
           ")" +
           /\s*=\s*(?:"[^"]*"|'[^']*'|[^\s'">=]+(?=[\s>]))/.source,
-        "i",
+        "i"
       ),
       lookbehind: true,
       inside: {
@@ -173,7 +176,7 @@ Object.defineProperty(Prism.languages.markup.tag, "addAttribute", {
               pattern: /(^=\s*(["']|(?!["'])))\S[\s\S]*(?=\2$)/,
               lookbehind: true,
               alias: [lang, "language-" + lang],
-              inside: Prism.languages[lang],
+              inside: languages[lang],
             },
             punctuation: [
               {
@@ -189,11 +192,11 @@ Object.defineProperty(Prism.languages.markup.tag, "addAttribute", {
   },
 });
 
-Prism.languages.html = Prism.languages.markup;
-Prism.languages.mathml = Prism.languages.markup;
-Prism.languages.svg = Prism.languages.markup;
+languages.html = languages.markup;
+languages.mathml = languages.markup;
+languages.svg = languages.markup;
 
-Prism.languages.xml = Prism.languages.extend("markup", {});
-Prism.languages.ssml = Prism.languages.xml;
-Prism.languages.atom = Prism.languages.xml;
-Prism.languages.rss = Prism.languages.xml;
+languages.xml = languages.extend("markup", {});
+languages.ssml = languages.xml;
+languages.atom = languages.xml;
+languages.rss = languages.xml;

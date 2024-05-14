@@ -1,4 +1,6 @@
-Prism.languages.sql = {
+import { languages } from "../prism";
+
+languages.sql = {
   comment: {
     pattern: /(^|[^\\])(?:\/\*[\s\S]*?\*\/|(?:--|\/\/|#).*)/,
     lookbehind: true,

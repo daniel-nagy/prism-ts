@@ -1,4 +1,6 @@
-Prism.languages.clike = {
+import { languages } from "../prism";
+
+languages.clike = {
   comment: [
     {
       pattern: /(^|[^\\])\/\*[\s\S]*?(?:\*\/|$)/,

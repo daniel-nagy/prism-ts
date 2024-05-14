@@ -1,5 +1,7 @@
+import { languages } from "../prism";
+
 // https://www.json.org/json-en.html
-Prism.languages.json = {
+languages.json = {
   property: {
     pattern: /(^|[^\\])"(?:\\.|[^\\"\r\n])*"(?=\s*:)/,
     lookbehind: true,
@@ -24,4 +26,4 @@ Prism.languages.json = {
   },
 };
 
-Prism.languages.webmanifest = Prism.languages.json;
+languages.webmanifest = languages.json;
