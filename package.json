@@ -4,8 +4,11 @@
   "version": "1.0.0",
   "description": "A fork of Prism, converting it to TypeScript and ESM.",
   "exports": {
+    ".": "./build/prism.js",
     "./*": "./build/*.js",
-    "./*.js": "./build/*.js"
+    "./*.js": "./build/*.js",
+    "./languages/*": "./build/languages/*.js",
+    "./languages/*.js": "./build//languages/*.js"
   },
   "files": [
     "build",
