@@ -1,5 +1,5 @@
 (function (Prism) {
-  const javascript = Prism.util.clone(Prism.languages.javascript);
+  const javascript = structuredClone(Prism.languages.javascript);
 
   const space = /(?:\s|\/\/.*(?!.)|\/\*(?:[^*]|\*(?!\/))\*\/)/.source;
   const braces = /(?:\{(?:\{(?:\{[^{}]*\}|[^{}])*\}|[^{}])*\})/.source;

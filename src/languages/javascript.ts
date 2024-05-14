@@ -44,7 +44,7 @@ Prism.languages.javascript = Prism.languages.extend("clike", {
           /(?:\d+(?:_\d+)*(?:\.(?:\d+(?:_\d+)*)?)?|\.\d+(?:_\d+)*)(?:[Ee][+-]?\d+(?:_\d+)*)?/
             .source) +
         ")" +
-        /(?![\w$])/.source
+        /(?![\w$])/.source,
     ),
     lookbehind: true,
   },
@@ -75,7 +75,8 @@ Prism.languages.insertBefore("javascript", "keyword", {
           .source +
         ")" +
         // lookahead
-        /(?=(?:\s|\/\*(?:[^*]|\*(?!\/))*\*\/)*(?:$|[\r\n,.;:})\]]|\/\/))/.source
+        /(?=(?:\s|\/\*(?:[^*]|\*(?!\/))*\*\/)*(?:$|[\r\n,.;:})\]]|\/\/))/
+          .source,
     ),
     lookbehind: true,
     greedy: true,
@@ -181,7 +182,7 @@ if (Prism.languages.markup) {
   Prism.languages.markup.tag.addAttribute(
     /on(?:abort|blur|change|click|composition(?:end|start|update)|dblclick|error|focus(?:in|out)?|key(?:down|up)|load|mouse(?:down|enter|leave|move|out|over|up)|reset|resize|scroll|select|slotchange|submit|unload|wheel)/
       .source,
-    "javascript"
+    "javascript",
   );
 }
 

@@ -11,7 +11,7 @@
           "|" +
           string.source +
           ")*?" +
-          /(?:;|(?=\s*\{))/.source
+          /(?:;|(?=\s*\{))/.source,
       ),
       inside: {
         rule: /^@[\w-]+/,
@@ -36,7 +36,7 @@
           "|" +
           /(?:[^\\\r\n()"']|\\[\s\S])*/.source +
           ")\\)",
-        "i"
+        "i",
       ),
       greedy: true,
       inside: {
@@ -52,7 +52,7 @@
       pattern: RegExp(
         "(^|[{}\\s])[^{}\\s](?:[^{};\"'\\s]|\\s+(?![\\s{])|" +
           string.source +
-          ")*(?=\\s*\\{)"
+          ")*(?=\\s*\\{)",
       ),
       lookbehind: true,
     },
