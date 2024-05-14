@@ -1,9 +1,0 @@
-ClassName
-notAClassName
-
-----------------------------------------------------
-
-[
-	["class-name", "ClassName"],
-	"\r\nnotAClassName"
-]

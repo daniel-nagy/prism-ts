@@ -1,9 +1,0 @@
-pi tau euler
-π τ ℇ
-
-----------------------------------------------------
-
-[
-	["constant", "pi"], ["constant", "tau"], ["constant", "euler"],
-	["constant", "π"], " τ ", ["constant", "ℇ"]
-]

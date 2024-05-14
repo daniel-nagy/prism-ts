@@ -1,9 +1,0 @@
-@startuml
-@enduml
-
-----------------------------------------------------
-
-[
-	["delimiter", "@startuml"],
-	["delimiter", "@enduml"]
-]

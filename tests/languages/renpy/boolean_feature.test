@@ -1,9 +1,0 @@
-true false
-True False
-
-----------------------------------------------------
-
-[
-	["boolean", "true"], ["boolean", "false"],
-	["boolean", "True"], ["boolean", "False"]
-]

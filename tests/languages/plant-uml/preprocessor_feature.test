@@ -1,7 +1,0 @@
-!pragma useVerticalIf on
-
-----------------------------------------------------
-
-[
-	["preprocessor", ["!pragma useVerticalIf on"]]
-]

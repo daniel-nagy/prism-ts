@@ -1,9 +1,0 @@
-host="mailsecure_log"
-
-----------------------------------------------------
-
-[
-	["property", "host"],
-	["operator", "="],
-	["string", "\"mailsecure_log\""]
-]
