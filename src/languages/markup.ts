@@ -129,9 +129,9 @@ Object.defineProperty(Prism.languages.markup.tag, "addInlined", {
           /__/g,
           function () {
             return tagName;
-          },
+          }
         ),
-        "i",
+        "i"
       ),
       lookbehind: true,
       greedy: true,
@@ -161,7 +161,7 @@ Object.defineProperty(Prism.languages.markup.tag, "addAttribute", {
           attrName +
           ")" +
           /\s*=\s*(?:"[^"]*"|'[^']*'|[^\s'">=]+(?=[\s>]))/.source,
-        "i",
+        "i"
       ),
       lookbehind: true,
       inside: {
