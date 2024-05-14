@@ -52,7 +52,7 @@ export class Token {
      * A copy of the full string this token was created from.
      */
     matchedString: string = "",
-    public length = matchedString.length
+    public length = matchedString.length,
   ) {}
 }
 
@@ -77,7 +77,7 @@ module Util {
   let uniqueId = 0;
 
   export function isObject(
-    value: unknown
+    value: unknown,
   ): value is Record<PropertyKey, unknown> {
     return typeof value === "object" && value !== null;
   }
@@ -145,7 +145,7 @@ export module Language {
     /**
      * The new tokens to append.
      */
-    redef: Grammar
+    redef: Grammar,
   ): Grammar {
     const lang = structuredClone(languages[id]!);
 
@@ -249,7 +249,7 @@ export module Language {
      * The object containing `inside`, i.e. the object that contains the object
      * to be modified.
      */
-    root: Record<string, any> = languages
+    root: Record<string, any> = languages,
   ): Grammar {
     const grammar = root[inside];
     const ret: Grammar = {};
@@ -289,7 +289,7 @@ export module Language {
     o: T,
     callback: (this: T, key: string, value: unknown, type: string) => void,
     type?: string | null,
-    visited: Record<string, unknown> = {}
+    visited: Record<string, unknown> = {},
   ) {
     for (const i in o) {
       if (o.hasOwnProperty(i)) {
@@ -304,7 +304,7 @@ export module Language {
             property as T,
             callback,
             Array.isArray(property) ? i : null,
-            visited
+            visited,
           );
         }
       }
@@ -356,7 +356,7 @@ export function tokenize(
   /**
    * An object containing the tokens to use.
    */
-  grammar: Grammar
+  grammar: Grammar,
 ): TokenStream {
   const { rest } = grammar;
 
@@ -382,7 +382,7 @@ export function tokenize(
 function addAfter<T>(
   list: LinkedList<T>,
   node: LinkedListNode<T>,
-  value: T
+  value: T,
 ): LinkedListNode<T> {
   // assumes that node != list.tail && values.length >= 0
   const next = node.next;
@@ -406,7 +406,7 @@ function matchGrammar(
   grammar: Grammar,
   startNode: LinkedListNode<string | Token>,
   startPos: number,
-  rematch?: RematchOptions
+  rematch?: RematchOptions,
 ): void {
   for (const token in grammar) {
     if (!grammar.hasOwnProperty(token) || !grammar[token]) {
@@ -536,7 +536,7 @@ function matchGrammar(
           token,
           inside ? tokenize(matchStr, inside) : matchStr,
           alias ?? "",
-          matchStr
+          matchStr,
         );
 
         currentNode = removeFrom && addAfter(tokenList, removeFrom, wrapped);
@@ -559,7 +559,7 @@ function matchGrammar(
             grammar,
             currentNode!.prev!,
             pos,
-            nestedRematch
+            nestedRematch,
           );
 
           // the reach might have been extended because of the rematching
@@ -576,7 +576,7 @@ function matchPattern(
   pattern: RegExp,
   pos: number,
   text: string,
-  lookbehind: boolean
+  lookbehind: boolean,
 ): RegExpExecArray | null {
   pattern.lastIndex = pos;
   const match = pattern.exec(text);
@@ -595,7 +595,7 @@ function matchPattern(
 function removeRange<T>(
   list: LinkedList<T>,
   node: LinkedListNode<T>,
-  count: number
+  count: number,
 ) {
   let next = node.next;
   for (var i = 0; i < count && next !== list.tail; i++) {

@@ -1,4 +1,4 @@
-import { languages } from "../prism";
+import { languages } from '../prism.js';
 
 // Many of the following regexes will contain negated lookaheads like
 // `[ \t]+(?![ \t])`. This is a trick to ensure
@@ -13,7 +13,7 @@ const space = /(?:[ \t]+(?![ \t])(?:<SP_BS>)?|<SP_BS>)/.source.replace(
   /<SP_BS>/g,
   function () {
     return spaceAfterBackSlash;
-  }
+  },
 );
 
 const string =
@@ -24,7 +24,7 @@ const option = /--[\w-]+=(?:<STR>|(?!["'])(?:[^\s\\]|\\.)+)/.source.replace(
   /<STR>/g,
   function () {
     return string;
-  }
+  },
 );
 
 const stringRule = {
@@ -60,7 +60,7 @@ languages.docker = {
       options: {
         pattern: re(
           /(^(?:ONBUILD<SP>)?\w+<SP>)<OPT>(?:<SP><OPT>)*/.source,
-          "i"
+          "i",
         ),
         lookbehind: true,
         greedy: true,
@@ -86,7 +86,7 @@ languages.docker = {
           pattern: re(
             /(^(?:ONBUILD<SP>)?HEALTHCHECK<SP>(?:<OPT><SP>)*)(?:CMD|NONE)\b/
               .source,
-            "i"
+            "i",
           ),
           lookbehind: true,
           greedy: true,
@@ -96,7 +96,7 @@ languages.docker = {
           pattern: re(
             /(^(?:ONBUILD<SP>)?FROM<SP>(?:<OPT><SP>)*(?!--)[^ \t\\]+<SP>)AS/
               .source,
-            "i"
+            "i",
           ),
           lookbehind: true,
           greedy: true,

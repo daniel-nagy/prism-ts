@@ -1,4 +1,4 @@
-import { languages } from "../prism";
+import { languages } from '../prism.js';
 
 // https://yaml.org/spec/1.2/spec.html#c-ns-anchor-property
 // https://yaml.org/spec/1.2/spec.html#c-ns-alias-node
@@ -29,7 +29,7 @@ const plainKey =
     function () {
       return /[^\s\x00-\x08\x0e-\x1f,[\]{}\x7f-\x84\x86-\x9f\ud800-\udfff\ufffe\uffff]/
         .source;
-    }
+    },
   );
 
 const string = /"(?:[^"\\\r\n]|\\.)*"|'(?:[^'\\\r\n]|\\.)*'/.source;
@@ -54,8 +54,8 @@ languages.yaml = {
         /<<prop>>/g,
         function () {
           return properties;
-        }
-      )
+        },
+      ),
     ),
     lookbehind: true,
     alias: "string",
@@ -69,7 +69,7 @@ languages.yaml = {
         })
         .replace(/<<key>>/g, function () {
           return "(?:" + plainKey + "|" + string + ")";
-        })
+        }),
     ),
     lookbehind: true,
     greedy: true,
@@ -83,7 +83,7 @@ languages.yaml = {
   datetime: {
     pattern: createValuePattern(
       /\d{4}-\d\d?-\d\d?(?:[tT]|[ \t]+)\d\d?:\d{2}:\d{2}(?:\.\d*)?(?:[ \t]*(?:Z|[-+]\d\d?(?::\d{2})?))?|\d{4}-\d{2}-\d{2}|\d\d?:\d{2}(?::\d{2}(?:\.\d*)?)?/
-        .source
+        .source,
     ),
     lookbehind: true,
     alias: "number",
@@ -107,7 +107,7 @@ languages.yaml = {
     pattern: createValuePattern(
       /[+-]?(?:0x[\da-f]+|0o[0-7]+|(?:\d+(?:\.\d*)?|\.\d+)(?:e[+-]?\d+)?|\.inf|\.nan)/
         .source,
-      "i"
+      "i",
     ),
     lookbehind: true,
   },

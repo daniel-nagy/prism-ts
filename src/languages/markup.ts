@@ -1,6 +1,6 @@
 // @ts-nocheck
 
-import { languages } from "../prism";
+import { languages } from '../prism.js';
 
 languages.markup = {
   comment: {
@@ -132,9 +132,9 @@ Object.defineProperty(languages.markup.tag, "addInlined", {
           /__/g,
           function () {
             return tagName;
-          }
+          },
         ),
-        "i"
+        "i",
       ),
       lookbehind: true,
       greedy: true,
@@ -164,7 +164,7 @@ Object.defineProperty(languages.markup.tag, "addAttribute", {
           attrName +
           ")" +
           /\s*=\s*(?:"[^"]*"|'[^']*'|[^\s'">=]+(?=[\s>]))/.source,
-        "i"
+        "i",
       ),
       lookbehind: true,
       inside: {

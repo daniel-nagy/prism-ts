@@ -1,7 +1,7 @@
 // @ts-nocheck
 
-import { languages } from "../prism";
-import "./markup";
+import { languages } from '../prism.js';
+import './markup.js';
 
 const string =
   /(?:"(?:\\(?:\r\n|[\s\S])|[^"\\\r\n])*"|'(?:\\(?:\r\n|[\s\S])|[^'\\\r\n])*')/;
@@ -15,7 +15,7 @@ languages.css = {
         "|" +
         string.source +
         ")*?" +
-        /(?:;|(?=\s*\{))/.source
+        /(?:;|(?=\s*\{))/.source,
     ),
     inside: {
       rule: /^@[\w-]+/,
@@ -40,7 +40,7 @@ languages.css = {
         "|" +
         /(?:[^\\\r\n()"']|\\[\s\S])*/.source +
         ")\\)",
-      "i"
+      "i",
     ),
     greedy: true,
     inside: {
@@ -56,7 +56,7 @@ languages.css = {
     pattern: RegExp(
       "(^|[{}\\s])[^{}\\s](?:[^{};\"'\\s]|\\s+(?![\\s{])|" +
         string.source +
-        ")*(?=\\s*\\{)"
+        ")*(?=\\s*\\{)",
     ),
     lookbehind: true,
   },

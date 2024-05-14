@@ -2,9 +2,9 @@
 
 declare function structuredClone<T>(value: T): T;
 
-import { Language, Token, languages } from "../prism";
-import "./javascript";
-import "./markup";
+import { Language, Token, languages } from '../prism.js';
+import './javascript.js';
+import './markup.js';
 
 const javascript = structuredClone(languages.javascript)!;
 
@@ -31,7 +31,7 @@ spread = re(spread).source;
 languages.jsx = Language.extend("markup", javascript);
 languages.jsx.tag.pattern = re(
   /<\/?(?:[\w.:-]+(?:<S>+(?:[\w.:$-]+(?:=(?:"(?:\\[\s\S]|[^\\"])*"|'(?:\\[\s\S]|[^\\'])*'|[^\s{'"/>=]+|<BRACES>))?|<SPREAD>))*<S>*\/?)?>/
-    .source
+    .source,
 );
 
 languages.jsx.tag.inside["tag"].pattern = /^<\/?[^\s>\/]*/;
@@ -50,7 +50,7 @@ Language.insertBefore(
       inside: languages.jsx,
     },
   },
-  languages.jsx.tag
+  languages.jsx.tag,
 );
 
 Language.insertBefore(
@@ -70,7 +70,7 @@ Language.insertBefore(
       },
     },
   },
-  languages.jsx.tag
+  languages.jsx.tag,
 );
 
 // The following will handle plain text inside tags

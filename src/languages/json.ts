@@ -1,4 +1,4 @@
-import { languages } from "../prism";
+import { languages } from '../prism.js';
 
 // https://www.json.org/json-en.html
 languages.json = {
